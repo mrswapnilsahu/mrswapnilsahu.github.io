@@ -1,5 +1,13 @@
 import { Project, Skill, Experience, Testimonial } from '../types';
 
+/**
+ * todo:
+  1. update social links and pic
+  2. fix timeline mobile alignment issue
+  3. update freecharge workex
+  4. some description updates also required
+ */
+
 export const projects: Project[] = [
   {
     id: 'project-1',
@@ -61,14 +69,16 @@ export const skills: Skill[] = [
   { name: 'HTML', icon: 'html' },
   { name: 'SCSS', icon: 'sass' },
   { name: 'TailwindCSS', icon: 'tailwind' },
-  { name: 'NextJS', icon: 'nextdotjs' },
+  { name: 'NextJS', icon: 'nextjs' },
   { name: 'NodeJS', icon: 'node' },
   { name: 'Express', icon: 'express' },
-  { name: 'Git', icon: 'git' },
+  { name: 'MongoDB', icon: 'mongodb' },
   { name: 'SQL', icon: 'postgresql' },
   { name: 'Docker', icon: 'docker' },
-  { name: 'Linux', icon: 'linux' },
   { name: 'Python', icon: 'python' },
+  { name: 'Go', icon: 'go' },
+  { name: 'Git', icon: 'git' },
+  { name: 'Linux', icon: 'linux' },
   // { name: 'Web Vitals', icon: 'performance' }
 ];
 

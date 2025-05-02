@@ -23,8 +23,10 @@ import {
   SiApachenetbeanside,
   SiLinux,
   SiPython,
-  SiSass,
+  SiSass
 } from 'react-icons/si';
+import { FaGolang } from "react-icons/fa6";
+
 
 
 const Skills: React.FC = () => {
@@ -84,7 +86,7 @@ const Skills: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           title="Skills & Expertise"
-          subtitle="Technologies I work with"
+          subtitle="Technologies I have experience with"
           centered
         />
 
@@ -134,6 +136,7 @@ function getIconForSkill(skillName: string): JSX.Element {
     Linux: <SiLinux />,
     Python: <SiPython />,
     SCSS: <SiSass />,
+    Go: <FaGolang />,
     'REST APIs': <SiApachenetbeanside />, // Placeholder icon
   };
 
