@@ -2,11 +2,25 @@ import { Project, Skill, Experience, Testimonial } from '../types';
 
 /**
  * todo:
-  1. update social links and pic
-  2. fix timeline mobile alignment issue
-  3. update freecharge workex
-  4. some description updates also required
+ *   1. workex description updates required
  */
+
+export const about = {
+  name: "Swapnil Sahu",
+  role: "Software Engineer",
+  // bio: "Software Engineer transforming chaos into clean, scalable code. Focusing on performance, accessibility, and brutally effective UI.",
+  avatar: "https://avatars.githubusercontent.com/u/23381895?v=4", // GitHub avatar for mrswapnilsahu
+  location: "Jabalpur, India",
+  experience: "6+ years",
+  projectsCount: "50+",
+  resumeUrl: "https://drive.google.com/file/d/1I7uWjh7lZ_mVhhm2eFG4d8HsBg_UXvLZ/view",
+  social: {
+    github: "https://github.com/mrswapnilsahu",
+    linkedin: "https://www.linkedin.com/in/mrswapnilsahu/",
+    twitter: "https://twitter.com/mrswapnilsahu",
+    email: "mailto:swapnilsahu4@gmail.com"
+  }
+}
 
 export const projects: Project[] = [
   {
@@ -15,7 +29,7 @@ export const projects: Project[] = [
     description: 'An AI-powered SaaS platform for automated question generation with secure authentication.',
     tags: ['NodeJS', 'React', 'MaterialUI', 'AWS'],
     image: 'https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    liveUrl: 'https://example.com/yellowpaper',
+    liveUrl: 'http://yellowpaper.co.in/',
     githubUrl: '',
     featured: true,
   },
@@ -29,16 +43,16 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/mrswapnilsahu/airbnb-clone',
     featured: true,
   },
-  {
-    id: 'project-3',
-    title: 'Messenger Clone',
-    description: 'A Facebook Messenger clone with real-time chat using Firebase.',
-    tags: ['React', 'Firebase', 'MaterialUI', 'CSS'],
-    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    liveUrl: '',
-    githubUrl: 'https://github.com/mrswapnilsahu/messenger-clone',
-    featured: false,
-  },
+  // {
+  //   id: 'project-3',
+  //   title: 'Messenger Clone',
+  //   description: 'A Facebook Messenger clone with real-time chat using Firebase.',
+  //   tags: ['React', 'Firebase', 'MaterialUI', 'CSS'],
+  //   image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  //   liveUrl: '',
+  //   githubUrl: 'https://github.com/mrswapnilsahu/messenger-clone',
+  //   featured: false,
+  // },
   {
     id: 'project-4',
     title: 'Library Automation System',
@@ -49,16 +63,6 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/mrswapnilsahu/library-system',
     featured: false,
   },
-  {
-    id: 'project-5',
-    title: 'Trivia Game',
-    description: 'A trivia quiz game using a public API for questions, built with React and TypeScript.',
-    tags: ['TypeScript', 'React', 'JSX', 'Bootstrap'],
-    image: 'https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    liveUrl: '',
-    githubUrl: 'https://github.com/mrswapnilsahu/trivia-game',
-    featured: false,
-  }
 ];
 
 export const skills: Skill[] = [
@@ -67,13 +71,12 @@ export const skills: Skill[] = [
   { name: 'JavaScript', icon: 'javascript' },
   { name: 'TypeScript', icon: 'typescript' },
   { name: 'HTML', icon: 'html' },
-  { name: 'SCSS', icon: 'sass' },
+  { name: 'Webpack', icon: 'webpack' },
   { name: 'TailwindCSS', icon: 'tailwind' },
   { name: 'NextJS', icon: 'nextjs' },
   { name: 'NodeJS', icon: 'node' },
   { name: 'Express', icon: 'express' },
   { name: 'MongoDB', icon: 'mongodb' },
-  { name: 'SQL', icon: 'postgresql' },
   { name: 'Docker', icon: 'docker' },
   { name: 'Python', icon: 'python' },
   { name: 'Go', icon: 'go' },
@@ -89,13 +92,12 @@ export const experiences: Experience[] = [
     company: 'Freecharge (Axis DBAT)',
     duration: 'July 2024 – Present',
     description: [
-      'Developed over 50 scalable and reusable frontend components for multiple web stores, contributing to a 25% increase in user engagement and serving a user base of over 100,000.',
-      'Utilized React, Redux, NextJS, SCSS, and TailwindCSS to develop user interfaces, resulting in a 30% improvement in page load times.',
-      'Developed and crafted the IGP Retail POS system with integrated payment processing. Achieved a 25% increase in sales and is used by 15+ businesses, processing over 500 transactions daily.',
-      'Engineered and implemented a comprehensive SCSS-based text style design system, reducing user confusion by 40% and improving overall UX.',
-      'Collaborated with UI/UX designers and Product Managers to create user-friendly interfaces, increasing user satisfaction ratings by 15%.',
-      'Mentored and guided 4 junior developers, providing technical guidance and fostering professional growth.',
-      'Achieved a 50% improvement in website performance by enhancing core web vitals.'
+      'Led frontend development for multiple fintech products such as Gold Loan, Credit Card, and strategic POCs, owning architecture design and implementation end‑to‑end.',
+      'Built reusable UI components and scalable frontend features using React, Redux Toolkit, TypeScript, and MaterialUI, integrating seamlessly with internal APIs.',
+      'Enhanced build speed and developer experience by implementing Rspack, Rsbuild, and Parcel in CI / CD pipelines, resulting in 40 % faster delivery cycles.',
+      'Collaborated with design, product, and backend teams to ship high‑impact features with a focus on quality, scalability, and performance.',
+      'Core contributor to internal frontend team, managing boilerplates, design systems, and shared tooling that streamlined development across teams.',
+      'Mentored developers, conducted code reviews, and introduced internal tooling to improve onboarding and maintainability'
     ],
     technologies: ['React', 'Redux', 'MaterialUI', 'SCSS']
   },

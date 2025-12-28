@@ -1,94 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { projects } from '../../utils/data';
-import SectionHeading from '../ui/SectionHeading';
-import Card from '../ui/Card';
-import Button from '../ui/Button';
-import { ExternalLink, Github } from 'lucide-react';
+import NeoButton from '../ui/NeoButton';
 
-const Projects: React.FC = () => {
-  const [showAll, setShowAll] = useState(false);
-  
-  const displayedProjects = showAll ? projects : projects.filter(project => project.featured);
-  
+interface ProjectsProps {
+  className?: string;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ className = "" }) => {
+  // Use first featured project as main, or just list them all differently?
+  // New design has "Featured Project" big card.
+  // I will make it so that it iterates over projects and shows them in this style.
+
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-950">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="My Projects"
-          subtitle="Explore some of my recent work"
-          centered
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayedProjects.map((project) => (
-            <Card key={project.id} hoverEffect className="h-full">
-              <div className="aspect-video">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, index) => (
-                    <span 
-                      key={index}
-                      className="text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-2 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex gap-3 mt-4">
-                  {project.githubUrl && (
-                    <a 
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 flex items-center gap-1"
-                    >
-                      <Github size={16} />
-                      <span>Code</span>
-                    </a>
-                  )}
-                  
-                  {project.liveUrl && (
-                    <a 
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-500 flex items-center gap-1 ml-4"
-                    >
-                      <ExternalLink size={16} />
-                      <span>Live Demo</span>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-        
-        {!showAll && projects.length > displayedProjects.length && (
-          <div className="mt-12 text-center">
-            <Button onClick={() => setShowAll(true)}>
-              View All Projects
-            </Button>
-          </div>
-        )}
+    <div id="projects" className={`${className} flex flex-col gap-8`}>
+      <div className="bg-neo-yellow border-4 border-black p-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <h2 className="text-4xl uppercase tracking-tighter text-center font-black text-black">Featured Projects</h2>
       </div>
-    </section>
+      {projects.map((project) => (
+        <div key={project.id} className="bg-black text-white border-4 border-black dark:border-white shadow-[12px_12px_0px_0px_rgba(0,0,0,0.3)] dark:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.3)] p-8 relative overflow-hidden group transition-transform hover:-translate-y-1">
+          {project.featured && (
+            <div className="absolute top-0 right-0 bg-neo-red text-black font-black text-xs px-2 py-1 border-b-4 border-l-4 border-black z-20">
+              FEATURED
+            </div>
+          )}
+          <div className="relative z-10">
+            <h3 className="text-4xl font-black mb-2 uppercase text-neo-yellow">{project.title}</h3>
+            <p className="font-mono text-gray-300 mb-6 max-w-lg">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.tags.map(tag => (
+                <span key={tag} className="bg-white text-black px-2 py-1 font-bold text-xs border-2 border-white">{tag}</span>
+              ))}
+            </div>
+            <div className="flex gap-4">
+              {project.liveUrl && (
+                <NeoButton variant="primary" className="text-sm" href={project.liveUrl}>
+                  View Live
+                </NeoButton>
+              )}
+              {project.githubUrl && (
+                <NeoButton variant="dark" className="text-sm border-white" href={project.githubUrl}>
+                  GitHub
+                </NeoButton>
+              )}
+            </div>
+          </div>
+          {/* Abstract UI Representation / Image */}
+          <div className="hidden sm:block absolute -right-10 -bottom-20 w-80 h-60 bg-white border-4 border-gray-500 transform -rotate-12 group-hover:-rotate-6 transition-transform duration-300">
+            <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale opacity-50 hover:opacity-100 transition-opacity" />
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 

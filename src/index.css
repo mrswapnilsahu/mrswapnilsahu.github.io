@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+
+  html,
+  body {
+    @apply bg-[#F7F7F7] text-black font-sans overflow-x-hidden w-full max-w-[100vw] transition-colors duration-300;
+  }
+
+  html.dark body {
+    @apply bg-[#1a1a1a] text-white;
+  }
+
+  ::selection {
+    @apply bg-[#FFE66D] text-black;
+  }
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
