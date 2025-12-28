@@ -62,12 +62,12 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.documentElement.classList.add('overflow-hidden');
     } else {
-      document.body.style.overflow = 'unset';
+      document.documentElement.classList.remove('overflow-hidden');
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.documentElement.classList.remove('overflow-hidden');
     };
   }, [mobileMenuOpen]);
 
@@ -150,12 +150,6 @@ const Header: React.FC = () => {
                 {item.label}
               </button>
             ))}
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-8 font-bold underline dark:text-white"
-            >
-              Close Menu
-            </button>
           </div>
         </div>,
         document.body
