@@ -1,6 +1,6 @@
 import React from "react";
 import { skills } from "../../utils/data";
-import SectionHeading from "../ui/SectionHeading";
+import NeoCard from "../ui/NeoCard";
 import {
   SiReact,
   SiNextdotjs,
@@ -27,89 +27,44 @@ import {
 } from 'react-icons/si';
 import { FaGolang } from "react-icons/fa6";
 
+interface SkillsProps {
+  className?: string;
+}
 
+const Skills: React.FC<SkillsProps> = ({ className = "" }) => {
+  // Use existing skills data
+  const colors = [
+    "bg-[#FF6B6B]",
+    "bg-[#4ECDC4]",
+    "bg-[#FFE66D]",
+    "bg-[#FF9F1C]",
+    "bg-[#C7F9CC]",
+    "bg-[#FFD93D]",
+  ];
 
-const Skills: React.FC = () => {
-  // Group skills by category
-  const skillsByCategory = skills.reduce((acc, skill) => {
-    if (skill.category) {
-      if (!acc[skill.category]) {
-        acc[skill.category] = [];
-      }
-      acc[skill.category].push(skill);
-    }
-    return acc;
-  }, {} as Record<string, typeof skills>);
-
-  const hasValidCategories = Object.keys(skillsByCategory).length > 0;
-
-  const categoryNames: Record<string, string> = {
-    frontend: "Frontend Development",
-    backend: "Backend Development",
-    database: "Databases",
-    devops: "Cloud & DevOps",
-    other: "Tools & Workflow",
+  const renderSkillCard = (skill: (typeof skills)[number], index: number) => {
+    const randomColor = colors[index % colors.length];
+    return (
+      <div
+        key={skill.name}
+        className={`${randomColor} border-2 border-black p-4 flex flex-col items-center justify-center gap-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 transition-transform text-black`}
+      >
+        <div className="text-3xl">
+          {getIconForSkill(skill.name)}
+        </div>
+        <span className="font-bold uppercase text-xs text-center">{skill.name}</span>
+      </div>
+    );
   };
 
-  const renderSkillCard = (skill: (typeof skills)[number]) => (
-    <div
-      key={skill.name}
-      className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 text-center transition-transform hover:-translate-y-1 duration-300"
-    >
-      <div className="text-4xl mb-2 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-        {getIconForSkill(skill.name)}
-      </div>
-
-      <h4 className="font-medium text-gray-900 dark:text-white">
-        {skill.name}
-      </h4>
-
-      {skill.proficiency ? (
-        <div className="mt-2 flex justify-center">
-          {[...Array(5)].map((_, i) => (
-            <div
-              key={i}
-              className={`w-2 h-2 rounded-full mx-0.5 ${
-                i < skill.proficiency
-                  ? "bg-blue-600 dark:bg-blue-500"
-                  : "bg-gray-300 dark:bg-gray-700"
-              }`}
-            />
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
-
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title="Skills & Expertise"
-          subtitle="Technologies I have experience with"
-          centered
-        />
-
-        <div className="space-y-12">
-          {hasValidCategories ? (
-            Object.entries(skillsByCategory).map(([category, categorySkills]) => (
-              <div key={category}>
-                <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-                  {categoryNames[category] || category}
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-                  {categorySkills.map(renderSkillCard)}
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-              {skills.map(renderSkillCard)}
-            </div>
-          )}
+    <div id="skills" className={className}>
+      <NeoCard title="Tech Arsenal" color="bg-white">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {skills.map((skill, idx) => renderSkillCard(skill, idx))}
         </div>
-      </div>
-    </section>
+      </NeoCard>
+    </div>
   );
 };
 
@@ -137,11 +92,10 @@ function getIconForSkill(skillName: string): JSX.Element {
     Python: <SiPython />,
     SCSS: <SiSass />,
     Go: <FaGolang />,
-    'REST APIs': <SiApachenetbeanside />, // Placeholder icon
+    'REST APIs': <SiApachenetbeanside />,
   };
 
-  return iconMap[skillName] || <SiApachenetbeanside />; // Default icon
+  return iconMap[skillName] || <SiApachenetbeanside />;
 }
-
 
 export default Skills;
