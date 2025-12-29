@@ -39,7 +39,7 @@ export const projects: Project[] = [
     description: 'A web application replicating Airbnb functionality using modern frontend technologies.',
     tags: ['NextJS', 'React', 'JavaScript', 'TailwindCSS'],
     image: 'https://images.pexels.com/photos/439391/pexels-photo-439391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    liveUrl: '',
+    liveUrl: 'https://airbnb-clone-nine-beta.vercel.app/',
     githubUrl: 'https://github.com/mrswapnilsahu/airbnb-clone',
     featured: true,
   },
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     tags: ['JavaScript', 'PHP', 'HTML', 'CSS'],
     image: 'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     liveUrl: '',
-    githubUrl: 'https://github.com/mrswapnilsahu/library-system',
+    githubUrl: 'https://github.com/mrswapnilsahu/Library-Automation-System',
     featured: false,
   },
 ];

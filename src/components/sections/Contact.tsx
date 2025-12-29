@@ -10,7 +10,7 @@ import { about } from '../../utils/data';
 
 const Contact: React.FC<ContactProps> = ({ className = "" }) => {
   return (
-    <div id="contact" className={`${className} bg-neo-red border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-black`}>
+    <div id="contact" className={`${className} bg-neo-red border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-black transition-all duration-200 hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-neo-sm dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]`}>
       <div>
         <h2 className="text-5xl font-black uppercase tracking-tighter mb-4">Let's Build Something<br />Ridiculous.</h2>
         <p className="font-bold text-xl border-l-8 border-black pl-4">
@@ -26,9 +26,9 @@ const Contact: React.FC<ContactProps> = ({ className = "" }) => {
           <Mail strokeWidth={3} /> Email Me
         </NeoButton>
         <div className="flex gap-4 justify-center">
-          <NeoButton href={about.social.github} variant="dark" className="p-3"><Github /></NeoButton>
-          <NeoButton href={about.social.linkedin} variant="dark" className="p-3"><Linkedin /></NeoButton>
-          <NeoButton href={about.social.twitter} variant="dark" className="p-3"><Twitter /></NeoButton>
+          <NeoButton href={about.social.github} target="_blank" variant="dark" className="p-3"><Github /></NeoButton>
+          <NeoButton href={about.social.linkedin} target="_blank" variant="dark" className="p-3"><Linkedin /></NeoButton>
+          <NeoButton href={about.social.twitter} target="_blank" variant="dark" className="p-3"><Twitter /></NeoButton>
         </div>
       </div>
     </div>
